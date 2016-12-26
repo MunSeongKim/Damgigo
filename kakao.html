@@ -1,16 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
-<meta charset="utf-8"/>
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
 <meta http-equiv="X-UA-Compatible" content="IE=edge"/>
 <meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
+
 <title>Login Demo - Kakao JavaScript SDK</title>
+<script src="http://code.jquery.com/jquery-1.10.1.js"></script>
 <script src="//developers.kakao.com/sdk/js/kakao.min.js"></script>
 
 </head>
 <body>
 <a id="kakao-login-btn"></a>
-<a href="http://alpha-developers.kakao.com/logout"></a>
+<br /><hr />
+<label>NickName></label>
+<span id="nick">test</span> <br />
+<label>profileImage</label>
+<span>
+	<img id="profile" src="" alt="profile image" />
+</span> <br />
+<label>thumbnail</label>
+<span>
+	<img id="thumbnail" src="" alt="thumbnail image" />
+</span> <br />
+
+
 <script type='text/javascript'>
   //<![CDATA[
     // 사용할 앱의 JavaScript 키를 설정해 주세요.
@@ -18,14 +32,29 @@
     // 카카오 로그인 버튼을 생성합니다.
     Kakao.Auth.createLoginButton({
       container: '#kakao-login-btn',
+	  //size: 'small',
       success: function(authObj) {
-        alert(JSON.stringify(authObj));
+        // 로그인 성공시, API를 호출합니다.
+        Kakao.API.request({
+          url: '/v1/api/talk/profile',
+          success: function(res) {
+			$('#nick').text(res.nickName);
+			$('#profile').attr("src", res.profileImageURL);
+			$('#thumbnail').attr("src", res.thumbnailURL);
+          },
+          fail: function(error) {
+            alert(JSON.stringify(error));
+          }
+        });
       },
       fail: function(err) {
-         alert(JSON.stringify(err));
+        alert(JSON.stringify(err));
       }
     });
   //]]>
+  var refreshToken = Kakao.Auth.getRefreshToken();
+  
+  
 </script>
 
 </body>
