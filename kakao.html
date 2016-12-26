@@ -12,6 +12,7 @@
 </head>
 <body>
 <a id="kakao-login-btn"></a>
+<a id="kakao-logout">logout</a>
 <br /><hr />
 <label>NickName></label>
 <span id="nick">test</span> <br />
@@ -36,11 +37,11 @@
       success: function(authObj) {
         // 로그인 성공시, API를 호출합니다.
         Kakao.API.request({
-          url: '/v1/api/talk/profile',
+          url: '/v1/user/me',
           success: function(res) {
-			$('#nick').text(res.nickName);
-			$('#profile').attr("src", res.profileImageURL);
-			$('#thumbnail').attr("src", res.thumbnailURL);
+			$('#nick').text(res.properties.nickname);
+			$('#profile').attr("src", res.properties.profile_image);
+			$('#thumbnail').attr("src", res.properties.thumbnail_image);
           },
           fail: function(error) {
             alert(JSON.stringify(error));
@@ -52,7 +53,14 @@
       }
     });
   //]]>
-  var refreshToken = Kakao.Auth.getRefreshToken();
+  
+  $('#kakao-logout').click(function(){
+	Kakao.Auth.logout(function() {
+		location.reload();
+	});
+	
+  });
+  
   
   
 </script>
