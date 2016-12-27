@@ -2,7 +2,10 @@
 <html>
 <head>
 <title>Facebook Login JavaScript Example</title>
-<meta charset="UTF-8">
+<meta http-equiv="Content-Type" content="text/html; charset=UTF-8" />
+<meta http-equiv="X-UA-Compatible" content="IE=edge"/>
+<meta name="viewport" content="user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0, width=device-width"/>
+<script src="http://code.jquery.com/jquery-1.10.1.js"></script>
 </head>
 <body>
 <script>
@@ -40,7 +43,7 @@
 
   window.fbAsyncInit = function() {
   FB.init({
-    appId      : '{your-app-id}',
+    appId      : '707596019409480',
     cookie     : true,  // enable cookies to allow the server to access 
                         // the session
     xfbml      : true,  // parse social plugins on this page
@@ -70,7 +73,7 @@
     var js, fjs = d.getElementsByTagName(s)[0];
     if (d.getElementById(id)) return;
     js = d.createElement(s); js.id = id;
-    js.src = "//connect.facebook.net/en_US/sdk.js";
+    js.src = "//connect.facebook.net/ko_KR/sdk.js";
     fjs.parentNode.insertBefore(js, fjs);
   }(document, 'script', 'facebook-jssdk'));
 
@@ -84,6 +87,17 @@
         'Thanks for logging in, ' + response.name + '!';
     });
   }
+  $(document).ready(function(){
+  
+  $('#logout').click(function(){
+	alert("click");
+	FB.logout(function(response) {
+	  alert("logout");
+	});
+  });
+  
+  });
+  
 </script>
 
 <!--
@@ -94,7 +108,7 @@
 
 <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
 </fb:login-button>
-
+<button id="logout">logout</button>
 <div id="status">
 </div>
 
