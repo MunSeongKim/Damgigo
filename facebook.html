@@ -49,6 +49,9 @@
     xfbml      : true,  // parse social plugins on this page
     version    : 'v2.8' // use graph api version 2.8
   });
+  FB.Event.subscribe('auth.logout', function(response) {
+    document.location.reload();
+});
 
   // Now that we've initialized the JavaScript SDK, we call 
   // FB.getLoginStatus().  This function gets the state of the
@@ -87,17 +90,8 @@
         'Thanks for logging in, ' + response.name + '!';
     });
   }
-  $(document).ready(function(){
   
-  $('#logout').click(function(){
-	alert("click");
-	FB.logout(function(response) {
-	  alert("logout");
-	});
-  });
-  
-  });
-  
+ 
 </script>
 
 <!--
@@ -108,7 +102,7 @@
 
 <fb:login-button scope="public_profile,email" onlogin="checkLoginState();">
 </fb:login-button>
-<button id="logout">logout</button>
+<a href="#" onclick="FB.logout();">[logout]</a><br>
 <div id="status">
 </div>
 
