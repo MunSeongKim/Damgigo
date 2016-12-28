@@ -1,0 +1,74 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>Image_preview</title>
+<style>
+	body{
+	margin: 20pxl;
+	}
+	#image_preview{
+	display: none;
+	}
+	</style>
+	
+	<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+</head>
+
+<body>
+ <form>
+    	<p>
+    		<label for = "image">Image </label>
+    		<br/>
+    		<input type="text" name ="text" id ="text_key"/>
+    		<input type="file" name="image" id="image"/>
+    	</p>
+    </form>
+    <div id="image_preview">
+    	<img src="#"/>
+    	<br/>
+    	<a href="#">Remove</a>
+    </div>
+    <div>
+    	<p id ="text_preview">
+    	
+    	</p>
+    </div>
+
+	<script type ="text/javascript">
+		$(document).ready(function(){
+			$('#text_key').keyup(function(event){
+				$('#text_preview').text($(this).val());
+			});
+		
+		
+			$('#image').on('change', function(){
+						   ext = $(this).val().split('.').pop().toLowerCase(); 
+							if($.inArray(ext,['gif','png','jpg','jpeg'])== -1){
+								resetFormElement($(this));
+								window.alert('not image file!');
+							}
+							else{
+								file = $('#image').prop("files")[0];
+								blobURL = window.URL.createObjectURL(file);
+								$('#image_preview img').attr("src", blobURL);
+								$('#image_preview').slideDown();
+								$(this).slideUp();
+							}
+
+			});
+			$('#image_preview a').bind('click',function(){
+				resetFormElement($('#image'));
+				$('#image').slideDown();
+				$(this).parent().slideUp();
+				return false;
+			});
+		
+			function resetFormElement(e){
+				e.wrap('<form>').closest('form').get(0).reset();
+				e.unwrap();
+			}
+		});
+	</script>
+</body>
+</html>
