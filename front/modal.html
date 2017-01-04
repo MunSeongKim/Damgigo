@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
+			<script>
+				$(document).ready(function(){
+					
+					$("#login").show();
+					$("#change").hide();
+					$("#Change_text").click(function(){
+						$("#login").toggle();
+						$("#change").toggle();
+						});
+				});
+		</script>
+	</head>
+	<body>
+		<!-- Button trigger modal -->
+		<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
+		  Login
+		</button>
+
+		<!-- Modal -->
+		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
+		  <div class="modal-dialog">
+			<div class="modal-content">
+			  <div class="modal-header">
+				<button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+				<h4 class="modal-title" id="myModalLabel">Login</h4>
+			  </div>
+			  <div class="modal-body" style=" text-align: center;">
+				  <div id="login">
+					ID 
+					<input type ="text" id="p_id" name ="ID를 입력하시오"> <br/><br/><br/>
+					PW
+					<input type ="password" id="m_pw" name ="PW를 입력하시오">
+				  </div>
+				  <div>
+					<p id="change">
+						인생은 본래 녹록지 않다. 하지만 멍청한 사람에게는 더욱 녹록지 않다.<br/>
+						Life is tough, but it's tougher when you're stupid.
+					</p>
+				  </div>
+			  </div>
+			  <div class="modal-footer">
+				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-primary" id="Change_text">Test_Text</button>
+			  </div>
+			</div>
+		  </div>
+		</div>
+	<body>
+</html>
+	
