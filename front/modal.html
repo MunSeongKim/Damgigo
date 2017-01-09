@@ -6,22 +6,53 @@
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
 			<script>
 				$(document).ready(function(){
+					$("#form_n_snslink").show();										
+					$("#facebook_login").hide();
+					$("#kakao_login").hide();
+					$("#naver_login").hide();	
 					
-					$("#login").show();
-					$("#change").hide();
-					$("#Change_text").click(function(){
-						$("#login").toggle();
-						$("#change").toggle();
+					$("#f_login").click(function(){						
+						$("#form_n_snslink").toggle();
+						$("#facebook_login").toggle();
+						$("#login_back_f").click(function(){
+							$("#facebook_login").hide();									
+							$("#form_n_snslink").show();							
 						});
+					});
+					$("#k_login").click(function(){						
+						$("#form_n_snslink").toggle();
+						$("#kakao_login").toggle();
+						$("#login_back_k").click(function(){
+							$("#form_n_snslink").show();
+							$("#kakao_login").hide();									
+						});
+					});
+					$("#n_login").click(function(){						
+						$("#form_n_snslink").toggle();
+						$("#naver_login").toggle();						
+						$("#login_back_n").click(function(){
+							$("#form_n_snslink").show();
+							$("#naver_login").hide();									
+						});
+					});
+					
 				});
 		</script>
+		<style>
+		.s_login {
+		text-align: center;
+		float:left;
+		width: 100%;
+		height: 100%;		
+		}
+		</style>
 	</head>
 	<body>
 		<!-- Button trigger modal -->
 		<button type="button" class="btn btn-primary btn-lg" data-toggle="modal" data-target="#myModal">
 		  Login
 		</button>
-
+		
 		<!-- Modal -->
 		<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true">
 		  <div class="modal-dialog">
@@ -31,26 +62,56 @@
 				<h4 class="modal-title" id="myModalLabel">Login</h4>
 			  </div>
 			  <div class="modal-body" style=" text-align: center;">
-				  <div id="login">
-					ID 
-					<input type ="text" id="p_id" name ="ID를 입력하시오"> <br/><br/><br/>
-					PW
-					<input type ="password" id="m_pw" name ="PW를 입력하시오">
-				  </div>
-				  <div>
-					<p id="change">
-						인생은 본래 녹록지 않다. 하지만 멍청한 사람에게는 더욱 녹록지 않다.<br/>
-						Life is tough, but it's tougher when you're stupid.
-					</p>
+				  <div id="modal_login">
+				  <div id="form_n_snslink">
+						<form class="form col-md-12 center-block">
+							<div class="form-group">
+							  <input type="text" class="form-control input-lg" placeholder="Email">
+							</div>
+							<div class="form-group">
+							  <input type="password" class="form-control input-lg" placeholder="Password">
+							</div>
+							<div class="form-group">
+							  <button class="btn btn-primary btn-lg btn-block">Sign In</button>
+							  <span class="pull-right"><a href="#">Register</a></span><span><a href="#">Need help?</a></span>
+							</div>
+						  </form>
+						  <div class="btn_sns_list" id="snslink"> 					
+									<p class="txt_guide">SNS 계정 로그인은 모바일 앱(v4.0.2)부터 이용 가능합니다.</p>
+									<a id="f_login" style="cursor: pointer;" sns-tp="facebook" class="join_facebook" tl:area="LISL" tl:ord="1"><i class="icon"></i><i class="i_division"></i>facebook으로 로그인</a><br>
+									<a id="k_login" style="cursor: pointer;" sns-tp="kakao"    class="join_kakao"    tl:area="LISL" tl:ord="2"><i class="icon"></i><i class="i_division"></i>kakao로 로그인</a><br>
+									<a id="n_login" style="cursor: pointer;" sns-tp="naver"    class="join_naver"    tl:area="LISL" tl:ord="3"><i class="icon"></i><i class="i_division"></i>naver로 로그인</a><br>
+								<!--티몬꺼 긁어옴-->
+						 </div>
+				   </div>
+						<div class="s_login" id="facebook_login">
+							<img src="img/facebook.jpg">
+							<h1>페이스북 로그인 창 입니다<h1>
+							<button id="login_back_f"type="button" class="btn btn-default">Back</button>
+						</div>
+						<div class="s_login" id="kakao_login">
+							<img src="img/kakao.png">
+							<h1>카카오톡 로그인 창 입니다<h1>
+							<button id="login_back_k"type="button" class="btn btn-default">Back</button>
+						</div>
+						<div class="s_login" id="naver_login">
+							<img src="img/naver.png">
+							<h1>네이버 로그인 창 입니다<h1>
+							<button id="login_back_n"type="button" class="btn btn-default">Back</button>
+						</div>
 				  </div>
 			  </div>
 			  <div class="modal-footer">
 				<button type="button" class="btn btn-default" data-dismiss="modal">Close</button>
-				<button type="button" class="btn btn-primary" id="Change_text">Test_Text</button>
 			  </div>
 			</div>
 		  </div>
 		</div>
+		
+		
+
+			  
+		
 	<body>
 </html>
 	

@@ -1,0 +1,36 @@
+<!doctype html>
+<html>
+<head>
+<meta charset="utf-8">
+<title>login_form</title>
+	<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
+	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+	<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>	
+	
+</head>
+<body>
+	<section id="register_id">
+		<form>
+			<h3>ID</h3>
+			<input id="input_id" type="text" name="ID" size=90/>
+			<button id="id_check">ID중복확인</button>			
+			<h3>PW</h3>
+			<input id="input_pw" type="password" neme="PW" size=90/>
+			<h3>PW Check</h3>
+			<input id="input_pw" type="password" neme="PW" size=90/>
+			<button id="pw_check">PW확인</button>
+			<h3>이름</h3>
+			<script>
+				$(function(){
+					$("#radio").buttonset();
+					});
+			</script>
+			<div id="radio">
+				<input type="radio" id="student" name="radio"><label for="student">재학생</label>
+				<input type="radio" id="graduate" name="radio"><label for="graduate">졸업생</label>
+				<input type="radio" id="teacher" name="radio"><label for="teacher">교직원</label>
+			</div>
+		</form>
+	</section>
+</body>
+</html>
