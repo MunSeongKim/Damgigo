@@ -6,7 +6,24 @@
 	<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 	<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
 	<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>	
-	
+	<script> 
+		$(document).ready(function(){
+			$('#check_student').show();
+			$('#check_teacher').hide();
+			
+			$(".check_radio").click(function(){
+				 var tmp = $(this).val();
+				 
+				 if( tmp != "teacher" ){
+					$('#check_student').show();
+					$('#check_teacher').hide();
+				 } else {
+					$('#check_student').hide();
+					$('#check_teacher').show();
+				 }
+			});
+		});	
+	</script>
 </head>
 <body>
 	<section id="register_id">
@@ -26,9 +43,31 @@
 					});
 			</script>
 			<div id="radio">
-				<input type="radio" id="student" name="radio"><label for="student">재학생</label>
-				<input type="radio" id="graduate" name="radio"><label for="graduate">졸업생</label>
-				<input type="radio" id="teacher" name="radio"><label for="teacher">교직원</label>
+				<input class="check_radio" type="radio" id="student" value="student" name="radio" checked>
+				<label for="student">재학생</label>
+				
+				<input class="check_radio" type="radio" id="graduate" value="graduate" name="radio">
+				<label for="graduate">졸업생</label>
+				
+				<input class="check_radio" type="radio" id="teacher" value="teacher" name="radio">
+				<label for="teacher">교직원</label>
+			</div>
+			
+			
+			
+			
+			
+			
+			<div id="check_student" class="contents_login">
+				<h3>학생 파트 내용입니다</h3>
+				<label>학번</label><input type="text" id="student_num" name="학번"> <br/>
+				<label>학과</label><input type="text" id="major" name="학과">
+			</div>
+			
+			<div id="check_teacher" class="contents_login">
+				<h3>선생님 파트 내용입니다</h3>
+				<label>소속</label><input type="text" id="student_num" name="학번"> <br/>
+				<label>직책</label><input type="text" id="major" name="학과">
 			</div>
 		</form>
 	</section>

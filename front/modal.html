@@ -2,49 +2,77 @@
 <html>
 	<head>
 		<link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/css/bootstrap.min.css">
+		<link rel="stylesheet" href="http://code.jquery.com/ui/1.11.4/themes/smoothness/jquery-ui.css">
 		<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
 		<script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.2/js/bootstrap.min.js"></script>
-			<script>
-				$(document).ready(function(){
-					$("#form_n_snslink").show();										
-					$("#facebook_login").hide();
-					$("#kakao_login").hide();
-					$("#naver_login").hide();	
-					
-					$("#f_login").click(function(){						
-						$("#form_n_snslink").toggle();
-						$("#facebook_login").toggle();
-						$("#login_back_f").click(function(){
-							$("#facebook_login").hide();									
-							$("#form_n_snslink").show();							
-						});
-					});
-					$("#k_login").click(function(){						
-						$("#form_n_snslink").toggle();
-						$("#kakao_login").toggle();
-						$("#login_back_k").click(function(){
-							$("#form_n_snslink").show();
-							$("#kakao_login").hide();									
-						});
-					});
-					$("#n_login").click(function(){						
-						$("#form_n_snslink").toggle();
-						$("#naver_login").toggle();						
-						$("#login_back_n").click(function(){
-							$("#form_n_snslink").show();
-							$("#naver_login").hide();									
-						});
-					});
-					
+		<script src="http://code.jquery.com/jquery-1.10.2.js"></script>
+		<script src="http://code.jquery.com/ui/1.11.4/jquery-ui.js"></script>	
+
+		<script> 
+			$(document).ready(function(){
+				
+				$('#check_student').show();
+				$('#check_teacher').hide();
+				
+				$(".check_radio").click(function(){
+					 var tmp = $(this).val();
+					 
+					 if( tmp != "teacher" ){
+						$('#check_student').show();
+						$('#check_teacher').hide();
+					 } else {
+						$('#check_student').hide();
+						$('#check_teacher').show();
+					 }
 				});
+				$("#form_n_snslink").show();										
+				$("#facebook_login").hide();
+				$("#kakao_login").hide();
+				$("#naver_login").hide();	
+				$("#register").hide();
+				
+				$("#f_login").click(function(){						
+					$("#form_n_snslink").toggle();
+					$("#facebook_login").toggle();
+					$("#login_back_f").click(function(){
+						$("#facebook_login").hide();									
+						$("#form_n_snslink").show();							
+					});					
+				});
+				$("#k_login").click(function(){						
+					$("#form_n_snslink").toggle();
+					$("#kakao_login").toggle();
+					$("#login_back_k").click(function(){
+						$("#form_n_snslink").show();
+						$("#kakao_login").hide();									
+					});
+				});
+				$("#n_login").click(function(){						
+					$("#form_n_snslink").toggle();
+					$("#naver_login").toggle();						
+					$("#login_back_n").click(function(){
+						$("#form_n_snslink").show();
+						$("#naver_login").hide();									
+					});
+				});
+				$("#reg").click(function(){						
+					$("#form_n_snslink").toggle();
+					$("#register").toggle();
+					$("#login_back_r").click(function(){
+						$("#form_n_snslink").show();
+						$("#register").hide();									
+					});
+				});
+					
+			});
 		</script>
 		<style>
-		.s_login {
-		text-align: center;
-		float:left;
-		width: 100%;
-		height: 100%;		
-		}
+			.s_login {
+				text-align: center;
+				float:left;
+				width: 100%;
+				height: 100%;		
+			}
 		</style>
 	</head>
 	<body>
@@ -63,31 +91,58 @@
 			  </div>
 			  <div class="modal-body" style=" text-align: center;">
 				  <div id="modal_login">
-				  <div id="form_n_snslink">
-						<form class="form col-md-12 center-block">
-							<div class="form-group">
-							  <input type="text" class="form-control input-lg" placeholder="Email">
-							</div>
-							<div class="form-group">
-							  <input type="password" class="form-control input-lg" placeholder="Password">
-							</div>
-							<div class="form-group">
-							  <button class="btn btn-primary btn-lg btn-block">Sign In</button>
-							  <span class="pull-right"><a href="#">Register</a></span><span><a href="#">Need help?</a></span>
-							</div>
-						  </form>
-						  <div class="btn_sns_list" id="snslink"> 					
-									<p class="txt_guide">SNS 계정 로그인은 모바일 앱(v4.0.2)부터 이용 가능합니다.</p>
-									<a id="f_login" style="cursor: pointer;" sns-tp="facebook" class="join_facebook" tl:area="LISL" tl:ord="1"><i class="icon"></i><i class="i_division"></i>facebook으로 로그인</a><br>
-									<a id="k_login" style="cursor: pointer;" sns-tp="kakao"    class="join_kakao"    tl:area="LISL" tl:ord="2"><i class="icon"></i><i class="i_division"></i>kakao로 로그인</a><br>
-									<a id="n_login" style="cursor: pointer;" sns-tp="naver"    class="join_naver"    tl:area="LISL" tl:ord="3"><i class="icon"></i><i class="i_division"></i>naver로 로그인</a><br>
-								<!--티몬꺼 긁어옴-->
-						 </div>
-				   </div>
+					  <div id="form_n_snslink">
+							<form class="form col-md-12 center-block">
+								<div class="form-group">
+								  <input type="text" class="form-control input-lg" placeholder="Email">
+								</div>
+								<div class="form-group">
+								  <input type="password" class="form-control input-lg" placeholder="Password">
+								</div>
+								<div class="form-group">
+								  <button class="btn btn-primary btn-lg btn-block" id="sign_in">Sign In</button>
+								  <span class="pull-right"><a id="reg" style="cursor: pointer;">Register</a></span><span><a href="#">Need help?</a></span>
+								</div>
+							  </form>
+							  <div class="btn_sns_list" id="snslink"> 					
+										<p class="txt_guide">SNS 계정 로그인은 모바일 앱(v4.0.2)부터 이용 가능합니다.</p>
+										<a id="f_login" style="cursor: pointer;" sns-tp="facebook" class="join_facebook" tl:area="LISL" tl:ord="1"><i class="icon"></i><i class="i_division"></i>facebook으로 로그인</a><br>
+										<a id="k_login" style="cursor: pointer;" sns-tp="kakao"    class="join_kakao"    tl:area="LISL" tl:ord="2"><i class="icon"></i><i class="i_division"></i>kakao로 로그인</a><br>
+										<a id="n_login" style="cursor: pointer;" sns-tp="naver"    class="join_naver"    tl:area="LISL" tl:ord="3"><i class="icon"></i><i class="i_division"></i>naver로 로그인</a><br>
+									<!--티몬꺼 긁어옴-->
+							 </div>
+					   </div>
 						<div class="s_login" id="facebook_login">
 							<img src="img/facebook.jpg">
-							<h1>페이스북 로그인 창 입니다<h1>
+							<h1>페이스북 로그인 창 입니다<h1>														
 							<button id="login_back_f"type="button" class="btn btn-default">Back</button>
+							<script>
+									$(function(){
+										$("#radio").buttonset();
+										});
+								</script>
+								<div id="radio">
+									<input class="check_radio" type="radio" id="student" value="student" name="radio" checked>
+									<label for="student">재학생</label>
+									
+									<input class="check_radio" type="radio" id="graduate" value="graduate" name="radio">
+									<label for="graduate">졸업생</label>
+									
+									<input class="check_radio" type="radio" id="teacher" value="teacher" name="radio">
+									<label for="teacher">교직원</label>
+								</div>
+								
+								<div id="check_student" class="contents_login">
+									<h3>학생 파트 내용입니다</h3>
+									<label>학번</label><input type="text" id="student_num" name="학번"> <br/>
+									<label>학과</label><input type="text" id="major" name="학과">
+								</div>
+								
+								<div id="check_teacher" class="contents_login">
+									<h3>선생님 파트 내용입니다</h3>
+									<label>소속</label><input type="text" id="student_num" name="학번"> <br/>
+									<label>직책</label><input type="text" id="major" name="학과">
+								</div>
 						</div>
 						<div class="s_login" id="kakao_login">
 							<img src="img/kakao.png">
@@ -99,6 +154,48 @@
 							<h1>네이버 로그인 창 입니다<h1>
 							<button id="login_back_n"type="button" class="btn btn-default">Back</button>
 						</div>
+						<div class="s_login" id="register">
+							<button id="login_back_r"type="button" class="btn btn-default">Back</button>
+							<form>
+								<h3>ID</h3>
+								<input id="input_id" type="text" name="ID" >
+								<button id="id_check">ID중복확인</button>			
+								<h3>PW</h3>
+								<input id="input_pw" type="password" neme="PW" >
+								<h3>PW Check</h3>
+								<input id="input_pw" type="password" neme="PW" >
+								<button id="pw_check">PW확인</button>
+								<h3>이름</h3>
+								<input id="input_id" type="text" name="U_name" >
+								<script>
+									$(function(){
+										$("#radio").buttonset();
+										});
+								</script>
+								<div id="radio">
+									<input class="check_radio" type="radio" id="student" value="student" name="radio" checked>
+									<label for="student">재학생</label>
+									
+									<input class="check_radio" type="radio" id="graduate" value="graduate" name="radio">
+									<label for="graduate">졸업생</label>
+									
+									<input class="check_radio" type="radio" id="teacher" value="teacher" name="radio">
+									<label for="teacher">교직원</label>
+								</div>
+								
+								<div id="check_student" class="contents_login">
+									<h3>학생 파트 내용입니다</h3>
+									<label>학번</label><input type="text" id="student_num" name="학번"> <br/>
+									<label>학과</label><input type="text" id="major" name="학과">
+								</div>
+								
+								<div id="check_teacher" class="contents_login">
+									<h3>선생님 파트 내용입니다</h3>
+									<label>소속</label><input type="text" id="student_num" name="학번"> <br/>
+									<label>직책</label><input type="text" id="major" name="학과">
+								</div>
+							</form>
+						</div>						
 				  </div>
 			  </div>
 			  <div class="modal-footer">
